@@ -6,6 +6,16 @@ Emacs is a omnipotent IDE.U can use it to write almost all programming languages
 ##About Me
 I'm not a good emacser. But, this configure is my research results.I hope it can help U in your road of emacs. 
 
+##Include plug-ins
+* erlang mode
+* golang mode
+* auto-compile
+* cedet
+* distel
+* ecb
+* themes
+* yasnippet
+
 ##Version 
 U can use apt-get to install emacs. I'm install it in Ubuntu 15 only. So If u use it in other OS have some issues.U can ask me at [http://my.fubaby.top](http://my.fubaby.top).Thank!
 
