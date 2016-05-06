@@ -22,6 +22,6 @@ U can use apt-get to install emacs. I'm install it in Ubuntu 15 only. So If u us
 ## Usage
 1. cd YOUR_HOME_PWD
 2. git clone https://github.com/littletwolee/emacs-configure.git
-3. move ./emacs ./.emacs
-4. move ./emacs.d ./.emacs.d
+3. move ./.emacs ./.emacs
+4. move ./.emacs.d ./.emacs.d
 5. open your emacs & look at changes
