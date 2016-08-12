@@ -5,13 +5,37 @@
 ;;;;颜色配置  
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (load-theme 'molokai t)
-;(load-theme 'zenburn t)
-
+;(load-theme 'comidia t)
+;(add-to-list 'load-path "~/.emacs.d/")
+;(require 'color-theme)
+;(color-theme-initialize) 
 
 ;;;;行号
 (require 'linum)
 (global-linum-mode 1)
 
+
+;;;;el-get
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+
+(unless (require 'el-get nil 'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.githubusercontent.com/dimitri/el-get/master/el-get-install.el")
+    (goto-char (point-max))
+    (eval-print-last-sexp)))
+
+(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
+(el-get 'sync)
+
+
+;;;;smex
+(add-to-list 'load-path "~/.emacs.d/el-get/smex")
+(require 'smex) 
+(smex-initialize) 
+(global-set-key (kbd "M-x") 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
 
 ;;;;最大化  
 ;(defun my-maximized ()    
@@ -128,10 +152,31 @@
 (global-set-key (kbd "C-<up>") 'windmove-up)     ; 上边窗口
 (global-set-key (kbd "C-<down>") 'windmove-down)   ; 下边窗口
 (setq stack-trace-on-error t) ;”Symbol's value as variable is void: stack-trace-on-error“
+;show&hide window
+(global-set-key [C-f1] 'ecb-hide-ecb-windows)
+(global-set-key [C-f2] 'ecb-show-ecb-windows)
 ;ceb鼠标点选
-(custom-set-variables '(ecb-primary-secondary-mouse-buttons (quote mouse-1--mouse-2))
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ecb-layout-window-sizes
+   (quote
+    (("left8"
+      (0.1807909604519774 . 0.2708333333333333)
+      (0.1807909604519774 . 0.20833333333333334)
+      (0.1807909604519774 . 0.2708333333333333)
+      (0.1807909604519774 . 0.16666666666666666)))))
+ '(ecb-options-version "2.40")
+ '(ecb-primary-secondary-mouse-buttons (quote mouse-1--mouse-2))
  '(ecb-source-path (quote (("/" "/")))))
-(custom-set-faces)
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
 
 
 ;;;;yasnippet
