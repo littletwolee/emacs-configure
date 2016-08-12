@@ -15,6 +15,12 @@
 (global-linum-mode 1)
 
 
+;;;;switch-window
+(add-to-list 'load-path "~/.emacs.d/el-get/switch-window")
+(require 'switch-window)
+(global-set-key (kbd "C-x o") 'switch-window)
+
+
 ;;;;el-get
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
@@ -188,3 +194,6 @@
    '(yas/dropdown-prompt yas/x-prompt yas/completing-prompt yas/ido-prompt yas/no-prompt))
 (yas/global-mode 1)
 (yas/minor-mode-on) ; 以minor mode打开，这样才能配合主mode使用
+
+
+

@@ -204,11 +204,60 @@ Like `smex', but limited to commands that are relevant to the active major mode.
 
 ;;;***
 
+;;;### (autoloads nil "switch-window/switch-window" "switch-window/switch-window.el"
+;;;;;;  (22445 38935 395683 655000))
+;;; Generated autoloads from switch-window/switch-window.el
+
+(autoload 'switch-window-then-delete "switch-window/switch-window" "\
+Display an overlay in each window showing a unique key, then
+ask user which window to delete
+
+\(fn)" t nil)
+
+(autoload 'switch-window-then-maximize "switch-window/switch-window" "\
+Display an overlay in each window showing a unique key, then
+ask user which window to maximize
+
+\(fn)" t nil)
+
+(autoload 'switch-window "switch-window/switch-window" "\
+Display an overlay in each window showing a unique key, then
+ask user for the window where move to
+
+\(fn)" t nil)
+
+(autoload 'switch-window-then-split-horizontally "switch-window/switch-window" "\
+Select a window then split it horizontally.
+
+\(fn ARG)" t nil)
+
+(autoload 'switch-window-then-split-vertically "switch-window/switch-window" "\
+Select a window then split it vertically.
+
+\(fn ARG)" t nil)
+
+(autoload 'switch-window-then-split-below "switch-window/switch-window" "\
+Select a window then split it with split-window-below's mode.
+
+\(fn ARG)" t nil)
+
+(autoload 'switch-window-then-split-right "switch-window/switch-window" "\
+Select a window then split it with split-window-right's mode.
+
+\(fn ARG)" t nil)
+
+(autoload 'switch-window-then-swap-buffer "switch-window/switch-window" "\
+Select a window then swap it buffer with current window's buffer.
+
+\(fn ARG)" t nil)
+
+;;;***
+
 ;;;### (autoloads nil nil ("el-get/el-get-autoloading.el" "el-get/el-get-build.el"
 ;;;;;;  "el-get/el-get-byte-compile.el" "el-get/el-get-core.el" "el-get/el-get-custom.el"
 ;;;;;;  "el-get/el-get-dependencies.el" "el-get/el-get-install.el"
 ;;;;;;  "el-get/el-get-methods.el" "el-get/el-get-notify.el" "el-get/el-get-recipes.el"
-;;;;;;  "el-get/el-get-status.el") (22445 36889 296919 484000))
+;;;;;;  "el-get/el-get-status.el") (22445 38935 547769 118000))
 
 ;;;***
 

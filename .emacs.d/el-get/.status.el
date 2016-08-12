@@ -22,4 +22,6 @@
 		  (require 'el-get))))
  (smex status "installed" recipe
        (:name smex :description "M-x interface with Ido-style fuzzy matching." :type github :pkgname "nonsequitur/smex" :features smex :post-init
-	      (smex-initialize))))
+	      (smex-initialize)))
+ (switch-window status "installed" recipe
+		(:name switch-window :description "A *visual* way to choose a window to switch to" :type github :pkgname "dimitri/switch-window" :features switch-window)))
