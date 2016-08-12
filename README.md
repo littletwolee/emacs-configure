@@ -18,6 +18,7 @@ I'm not a good emacser. But, this configure is my research results.I hope it can
 * yasnippet 
 * el-get -- A package controller for emacs
 * smex -- A funtion reminder for M-X
+* switch-window -- Switch every windows easy
 
 ##Version
  
