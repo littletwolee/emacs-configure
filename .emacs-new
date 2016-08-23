@@ -1,0 +1,136 @@
+;;;;elpa
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "https://melpa.org/packages/") t)
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/")))
+(package-initialize)
+
+
+;;;;进来加载目录
+(setq default-directory "~/code")
+
+;;;;颜色配置  
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
+(load-theme 'molokai t)
+;(load-theme 'solarized t)
+;(set-frame-parameter nil 'background-mode 'dark)    ;;选择solarized dark
+;(enable-theme 'solarized)
+
+
+;;;;行号
+(require 'linum)
+(global-linum-mode 1)
+
+
+;;;;最大化  
+;(defun my-maximized ()    
+;  (interactive)    
+;  (x-send-client-message    
+;   nil 0 nil "_NET_WM_STATE" 32    
+;   '(2 "_NET_WM_STATE_MAXIMIZED_HORZ" 0))    
+;  (x-send-client-message    
+;   nil 0 nil "_NET_WM_STATE" 32    
+;   '(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0)))    
+;(my-maximized)  
+
+
+(global-font-lock-mode t);语法高亮 
+(setq visible-bell t) ;关闭错误提示音
+(setq inhibit-startup-message t);关闭起动时LOGO
+(setq default-major-mode 'erlang-mode);一打开就起用 text 模式 
+(show-paren-mode t);显示括号匹配
+(setq show-paren-style 'parenthesis);括号匹配时可以高亮显示另外一边的括号，但光标不会烦人的跳到另一个括号处。
+(mouse-avoidance-mode 'animate) ;光标靠近鼠标指针时，让鼠标指针自动让开，别挡住视线。
+(set-scroll-bar-mode nil);;取消滚动栏 
+(auto-image-file-mode t);打开图片显示功能 
+(fset 'yes-or-no-p 'y-or-n-p);以 y/n代表 yes/no 
+(setq x-select-enable-clipboard t);支持emacs和外部程序的粘贴
+(setq auto-save-default nil);关闭备份文件#xxx#
+(setq-default cursor-type 'bar) ;设定光标为短线
+
+
+;;;;全选
+(defun select-all ()
+  "Select the whole buffer."
+  (interactive)
+  (goto-char (point-min))
+  ;; Mark current position and push it into the mark ring.
+  (push-mark-command nil nil)
+  (goto-char (point-max))
+  (message "ok."))
+(provide 'select-all)
+(autoload 'select-all "select-all"
+  "Select the whole buffer." t nil)
+;; user defined keys
+(global-set-key "\C-x\C-a" 'select-all)
+
+
+;;;;helm
+(add-to-list 'load-path "~/.emacs.d/elpa/helm-core-20160821.110")
+(require 'helm-config)
+(require 'helm)
+(global-set-key (kbd "M-x") 'helm-M-x)
+
+
+;;;;ecb
+(add-to-list 'load-path "~/.emacs.d/elpa/ecb-20140215.114")    ;你的ecb解压目录
+(require 'ecb)
+;(require 'ecb-autoloads)
+(setq ecb-auto-activate t)
+(setq ecb-tip-of-the-day nil)
+(global-set-key (kbd "C-<f7>") 'ecb-minor-mode)   ; 打开ejb
+;ejb 快捷键
+(global-set-key (kbd "C-<left>") 'windmove-left)   ;左边窗口
+(global-set-key (kbd "C-<right>") 'windmove-right)  ;右边窗口
+(global-set-key (kbd "C-<up>") 'windmove-up)     ; 上边窗口
+(global-set-key (kbd "C-<down>") 'windmove-down)   ; 下边窗口
+(setq stack-trace-on-error t) ;”Symbol's value as variable is void: stack-trace-on-error“
+;show&hide window
+(global-set-key [C-f1] 'ecb-hide-ecb-windows)
+(global-set-key [C-f2] 'ecb-show-ecb-windows)
+;ceb鼠标点选
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ecb-layout-window-sizes nil)
+ '(ecb-options-version "2.40")
+ '(ecb-primary-secondary-mouse-buttons (quote mouse-1--mouse-2))
+ '(ecb-source-path (quote (("/" "/")))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+
+
+;;;;auto-complete
+(add-to-list 'load-path "~/.emacs.d/elpa/auto-complete-20160710.1544")
+(require 'auto-complete)
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/elpa/auto-complete-20160710.1544/ac-dict")
+(ac-config-default)
+
+
+;;;;go
+(add-to-list 'load-path "~/.emacs.d/elpa/go-mode-20160715.205")
+(require 'go-autocomplete)
+(require 'auto-complete-config)
+(ac-config-default)
+(require 'go-mode-autoloads)
+
+
+;;;;yasnippet
+ (add-to-list 'load-path "~/.emacs.d/elpa/yasnippet")
+    (require 'yasnippet) ;; not yasnippet-bundle
+;    (yas/initialize)
+    (yas/load-directory "~/.emacs.d/elpa/yasnippet/snippets")
+(setq yas/prompt-functions 
+   '(yas/dropdown-prompt yas/x-prompt yas/completing-prompt yas/ido-prompt yas/no-prompt))
+(yas/global-mode 1)
+(yas/minor-mode-on) ; 以minor mode打开，这样才能配合主mode使用
+
