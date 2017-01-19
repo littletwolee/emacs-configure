@@ -234,7 +234,7 @@ values."
    ;; If non nil the frame is maximized when Emacs starts up.
    ;; Takes effect only if `dotspacemacs-fullscreen-at-startup' is nil.
    ;; (default nil) (Emacs 24.4+ only)
-   dotspacemacs-maximized-at-startup nil
+   dotspacemacs-maximized-at-startup t
    ;; A value from the range (0..100), in increasing opacity, which describes
    ;; the transparency level of a frame when it's active or selected.
    ;; Transparency can be toggled through `toggle-transparency'. (default 90)
@@ -300,7 +300,12 @@ before packages are loaded. If you are unsure, you should try in setting them in
   )
 
 (defun dotspacemacs/user-config ()
-   (delete-selection-mode 1)
+  (delete-selection-mode 1)
+  (global-auto-complete-mode t)
+  (global-set-key (kbd "<backtab>") #'(lambda ()
+                                        (interactive)
+                                        (switch-to-buffer (other-buffer (current-buffer) 1))))
+  (global-set-key (kbd "C-x k") 'kill-this-buffer)
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
 layers configuration.
@@ -316,6 +321,8 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(company-auto-complete t)
+ '(global-auto-complete-mode nil)
  '(global-linum-mode nil)
  '(line-number-mode t)
  '(neo-theme (quote ascii)))
