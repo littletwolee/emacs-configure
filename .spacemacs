@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     php
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -302,7 +303,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
 (defun dotspacemacs/user-config ()
   (delete-selection-mode 1)
   ;;(auto-complete-mode 1)
-  (global-auto-complete-mode 1)
+  ;;(global-auto-complete-mode 1)
   (global-set-key (kbd "<backtab>") #'(lambda ()
                                         (interactive)
                                         (switch-to-buffer (other-buffer (current-buffer) 1))))
