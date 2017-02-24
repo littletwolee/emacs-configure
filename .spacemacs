@@ -38,7 +38,7 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      helm
-     yaml
+     ;;yaml
      shell-scripts
      markdown
      javascript
@@ -303,7 +303,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
 (defun dotspacemacs/user-config ()
   (delete-selection-mode 1)
   (auto-complete-mode 1)
-  ;;(global-auto-complete-mode 1)
+  (global-auto-complete-mode 1)
   (global-set-key (kbd "<backtab>") #'(lambda ()
                                         (interactive)
                                         (switch-to-buffer (other-buffer (current-buffer) 1))))
