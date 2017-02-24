@@ -302,12 +302,14 @@ before packages are loaded. If you are unsure, you should try in setting them in
 
 (defun dotspacemacs/user-config ()
   (delete-selection-mode 1)
-  ;;(auto-complete-mode 1)
+  (auto-complete-mode 1)
   ;;(global-auto-complete-mode 1)
   (global-set-key (kbd "<backtab>") #'(lambda ()
                                         (interactive)
                                         (switch-to-buffer (other-buffer (current-buffer) 1))))
   (global-set-key (kbd "C-x k") 'kill-this-buffer)
+  (global-set-key (kbd "C-,") 'hs-hide-all)
+  (global-set-key (kbd "C-.") 'hs-toggle-hiding)
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
 layers configuration.
