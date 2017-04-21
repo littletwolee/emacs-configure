@@ -31,14 +31,15 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
-     php
+     nginx
+     html
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      helm
-     ;;yaml
+     yaml
      shell-scripts
      markdown
      javascript
@@ -48,6 +49,7 @@ values."
      ;; better-defaults
      emacs-lisp
      git
+     php
      ;; gtags
      ;; markdown
      ;; org
@@ -55,7 +57,7 @@ values."
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
      ;; spell-checking
-     ;; syntax-checking
+     syntax-checking
      ;; version-control
      )
    ;; List of additional packages that will be installed without being
@@ -303,13 +305,15 @@ before packages are loaded. If you are unsure, you should try in setting them in
 (defun dotspacemacs/user-config ()
   (delete-selection-mode 1)
   (auto-complete-mode 1)
-  (global-auto-complete-mode 1)
-  (global-set-key (kbd "<backtab>") #'(lambda ()
-                                        (interactive)
-                                        (switch-to-buffer (other-buffer (current-buffer) 1))))
+  ;;(global-auto-complete-mode 1)
+  (global-set-key (kbd "C-c c") 'neotree-dir)
   (global-set-key (kbd "C-x k") 'kill-this-buffer)
   (global-set-key (kbd "C-,") 'hs-hide-all)
   (global-set-key (kbd "C-.") 'hs-toggle-hiding)
+  (global-set-key (kbd "C-M-,") 'previous-buffer)
+  (global-set-key (kbd "C-M-.") 'next-buffer)
+  (global-set-key (kbd "C-M-w") 'other-window)
+  (global-set-key (kbd "C-M-SPACE") 'set-mark)
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
 layers configuration.
@@ -329,7 +333,10 @@ you should place your code here."
  '(global-auto-complete-mode nil)
  '(global-linum-mode nil)
  '(line-number-mode t)
- '(neo-theme (quote ascii)))
+ '(neo-theme (quote ascii))
+ '(package-selected-packages
+   (quote
+    (nginx-mode web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode helm-css-scss haml-mode emmet-mode company-web web-completion-data yaml-mode company-quickhelp ac-ispell web-beautify smeargle phpunit phpcbf php-extras php-auto-yasnippets orgit org mmm-mode markdown-toc markdown-mode magit-gitflow livid-mode skewer-mode simple-httpd json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc insert-shebang helm-gitignore helm-company helm-c-yasnippet go-guru go-eldoc gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flycheck-pos-tip pos-tip flycheck fish-mode evil-magit magit magit-popup git-commit with-editor drupal-mode php-mode company-tern dash-functional tern company-statistics company-shell company-go go-mode company coffee-mode auto-yasnippet yasnippet auto-complete ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spacemacs-theme spaceline restart-emacs request rainbow-delimiters quelpa popwin persp-mode pcre2el paradox org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-flx helm-descbinds helm-ag google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu elisp-slime-nav dumb-jump define-word column-enforce-mode clean-aindent-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
